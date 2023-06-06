@@ -62,15 +62,19 @@ router.post("/books/create", (req, res, next) => {
 
 
 // UPDATE: display form
-router.get('/books/:bookId/edit', (req, res, next) => {
+router.get('/books/:bookId/edit', async (req, res, next) => {
     const { bookId } = req.params;
 
-    Book.findById(bookId)
-        .then(bookToEdit => {
-            // console.log(bookToEdit);
-            res.render('books/book-edit.hbs', { book: bookToEdit }); // <-- add this line
-        })
-        .catch(error => next(error));
+    try {
+        const authors = await Author.find();
+        const bookDetails = await Book.findById(bookId);
+
+        res.render('books/book-edit.hbs', { book: bookDetails, authors: authors });
+
+    } catch (e) {
+        next(e);
+    }
+
 });
 
 
