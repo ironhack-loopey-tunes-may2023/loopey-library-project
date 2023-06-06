@@ -6,7 +6,15 @@
   </label>
 
   <label> Author:
-    <input type="text" name="author" />
+
+    <select name="author">
+        {{#each authorsArr}}
+          <option value={{this._id}}>
+            {{this.name}}
+          </option>
+        {{/each}}
+    </select>
+
   </label>
 
   <label> Description:
