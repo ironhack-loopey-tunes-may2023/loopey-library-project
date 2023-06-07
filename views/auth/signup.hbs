@@ -2,6 +2,13 @@
 
 <form method="POST" action="/signup">
 
+
+    {{#if errorMessage}}
+        <p class="warning">
+            {{errorMessage}}
+        </p>
+    {{/if}}
+
     <label> Email
         <input type="email" name="email" placeholder="rockstar@ironhack.com" required />
     </label>
