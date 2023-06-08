@@ -9,7 +9,7 @@ const router = express.Router();
 const saltRounds = 10;
 
 
-//GET /signup
+//GET /signup 
 router.get("/signup", (req, res, next) => {
     res.render("auth/signup");
 });
@@ -71,14 +71,14 @@ router.post("/signup", (req, res, next) => {
 });
 
 
-//GET /login
+//GET /login (display login form)
 router.get("/login", (req, res, next) => {
     res.render("auth/login");
 });
 
 
 
-//POST /login
+//POST /login (process login form)
 router.post("/login", (req, res, next) => {
     const { email, password } = req.body;
 
